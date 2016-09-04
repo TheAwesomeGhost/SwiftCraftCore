@@ -1,0 +1,7 @@
+name: SwiftCraftCore
+main: com.swiftcraft.core.SwiftCraftCore
+version: 1.0
+commands:
+    ranks:
+        description: 'shows all available ranks on SwiftCraftCore'
+        usage: '/ranks'
