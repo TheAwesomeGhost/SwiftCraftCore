@@ -4,7 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 
-import features.Ranks;
+import com.swiftcraft.core.features.Ranks;
 
 public class CommandHandler {
 
