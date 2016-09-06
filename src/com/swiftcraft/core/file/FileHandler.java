@@ -1,4 +1,4 @@
-package com.swiftcraft.core;
+package com.swiftcraft.core.file;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -12,6 +12,8 @@ import java.util.logging.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
+import com.swiftcraft.core.SwiftCraftCore;
+
 public class FileHandler {
 	static Plugin p;
 	private static Logger log = Bukkit.getLogger();
@@ -22,15 +24,8 @@ public class FileHandler {
 		return fileHandler;
 	}
 
-	public FileHandler(Plugin plugin) {
-		p = plugin;
-		if (fileHandler == null) {
-			fileHandler = this;
-		}
-
-	}
-
 	public static void doInit() {
+		p = SwiftCraftCore.getInstance();
 		createRanksFileIfNotExists();
 		createDataFolderIfNotExists();
 	}

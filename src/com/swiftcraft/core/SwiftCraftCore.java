@@ -3,19 +3,19 @@ package com.swiftcraft.core;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import com.swiftcraft.core.commands.Ranks;
+import com.swiftcraft.core.file.FileHandler;
 
 public class SwiftCraftCore extends JavaPlugin {
 	private static Logger log = Bukkit.getLogger();
-	private CommandHandler ch;
-	Object[] ranksConfig;
 
 	@Override
 	public void onEnable() {
+		instance = this;
 		initHandlers();
-
+		addCommands();
 		log.info("SwiftCraftCore loaded!");
 	}
 
@@ -25,13 +25,15 @@ public class SwiftCraftCore extends JavaPlugin {
 	}
 
 	public void initHandlers() {
-		new FileHandler(this);
 		FileHandler.doInit();
-		ch = new CommandHandler(this);
 	}
-
-	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		return ch.onCommand(sender, command, label, args);
+	
+	public void addCommands(){
+		getCommand("ranks").setExecutor(new Ranks());
 	}
-
+	
+	private static SwiftCraftCore instance;
+	public static SwiftCraftCore getInstance(){
+		return instance;
+	}
 }
